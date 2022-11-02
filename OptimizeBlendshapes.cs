@@ -192,6 +192,12 @@ public class OptimizeBlendshapes : EditorWindow
             List<BlendShapeData> blendShapesData = new List<BlendShapeData>(blendshapesNames.Length);
             foreach (string blendShapeName in blendshapesNames)
             {
+                if (blendShapeName == null)
+                {
+                    Debug.LogWarning("Skipping Null blendshape.");
+                    continue;
+                }
+
                 int blendShapeIndex = mesh.GetBlendShapeIndex(blendShapeName);
                 if (blendShapeIndex < 0)
                 {
